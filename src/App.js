@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import AnimatedRoutes from "./components/AnimatedRoutes";
+import { Navbar, Footer } from "./components";
+
+export const variants = {
+	hidden: { opacity: 0, y: 300 },
+	enter: { opacity: 1, y: 0 },
+	// exit: { opacity: 0, y: 300 },
+};
+
+export const transition = { type: "linear", duration: 0.7 };
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<main className="h-screen flex flex-col bg-primary-200 overflow-hidden">
+			<Navbar />
+			<AnimatedRoutes />
+			<Footer />
+		</main>
+	);
 }
 
 export default App;
