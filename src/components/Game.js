@@ -138,7 +138,9 @@ const Game = () => {
 	};
 
 	const checkWinner = (newCells) => {
+		let decided = false;
 		for (let cols in combinations) {
+			// eslint-disable-next-line no-loop-func
 			combinations[cols].forEach((col) => {
 				if (
 					newCells[col[0]] === "" ||
@@ -146,25 +148,25 @@ const Game = () => {
 					newCells[col[2]] === ""
 				) {
 					return;
-				}
-				if (
+				} else if (
 					newCells[col[0]] === newCells[col[1]] &&
 					newCells[col[1]] === newCells[col[2]]
 				) {
+					console.log("girdi 1");
 					setWinner(newCells[col[0]]);
 					setPlayer(newCells[col[0]]);
-					return;
-				}
-				const check = newCells.filter((cell) => {
-					return cell === "";
-				});
-
-				if (check.length === 0) {
-					setWinner("draw");
-					setPlayer(newCells[col[0]]);
+					decided = true;
 					return;
 				}
 			});
+		}
+		const check = newCells.filter((cell) => {
+			return cell === "";
+		});
+
+		if (check.length === 0 && !decided) {
+			setWinner("draw");
+			return;
 		}
 	};
 
@@ -252,9 +254,11 @@ const Game = () => {
 				</div>
 			</section>
 			<div className="bg-primary-200/[.6] p-2 mt-3 rounded-xl">
-				<p className="text-secondary-100 ">// Tic tac toe</p>
-				<p className="text-secondary-100 ">// Use mouse to click cells</p>
-				<p className="text-secondary-100">
+				<p className="text-secondary-100 ">// tic tac toe</p>
+				<p className="text-secondary-100 ">
+					// click one of the cells to start
+				</p>
+				<p className="text-white">
 					<span className="text-secondary-300">let </span>
 					<span className="text-accent-200">
 						{winner === "X" || winner === "O"

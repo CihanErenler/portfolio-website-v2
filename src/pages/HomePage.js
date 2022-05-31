@@ -40,7 +40,9 @@ const HomePage = () => {
 								<span className="text-accent-200">githubLink</span> ={" "}
 								<a
 									className="text-accent-100 hover:underline"
-									href="https://github.com/CihanErenler?tab=repositories"
+									href="https://github.com/CihanErenler/portfolio-website-v2/blob/main/src/components/Game.js"
+									target="_blank"
+									rel="noreferrer"
 								>
 									"https://github.com/CihanErenler"
 								</a>
