@@ -16,7 +16,7 @@ const HomePage = () => {
 			transition={transition}
 		>
 			<Container full={true}>
-				<div className="opacity-80 absolute overflow-hidden right-16 -top-32">
+				<div className="absolute overflow-hidden right-16 -top-32">
 					<img
 						className=" h-full w-full object-cover scale-75"
 						src={blur}

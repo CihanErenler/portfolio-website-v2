@@ -12,3 +12,7 @@ body {
 .game-cell {
 	@apply h-20 w-20 flex items-center justify-center font-thin text-5xl text-secondary-100 select-none;
 }
+
+.btn-primary {
+	@apply w-[112px] h-[32px] bg-accent-100 text-black rounded-lg text-sm font-semibold;
+}
