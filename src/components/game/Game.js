@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Button from "./Button";
 import Screw from "./Screw";
+import GameFooter from "./GameFooter";
+import GameContent from "./GameContent";
 
 const Game = () => {
 	const [cells, setCells] = useState(Array(9).fill(""));
@@ -174,6 +175,7 @@ const Game = () => {
 		if (player === "O" && !winner) {
 			playOpponent();
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cells]);
 
 	return (
@@ -182,98 +184,13 @@ const Game = () => {
 			<Screw position="top-right" />
 			<Screw position="bottom-right" />
 			<Screw position="bottom-left" />
-			<section className="bg-primary-200 h-[300px] w-full mt-3 rounded-xl flex items-center justify-center overflow-hidden relative p-10">
-				{winner && (
-					<div className="absolute w-full text-center h-full flex flex-col justify-center items-center">
-						<div className="w-full bg-primary-100/[.8] py-4">
-							<h1 className="uppercase text-accent-200 w-full text-3xl font-thin mb-3 ">
-								{winner === "X" ? "well done!" : "game over!"}
-							</h1>
-							<Button action={handleStartAgain}>start-again</Button>
-						</div>
-					</div>
-				)}
-				<div className="w-full h-full flex flex-col justify-center items-center text-white">
-					<section className="flex">
-						<div
-							className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-							onClick={() => handleClick(0)}
-						>
-							{cells[0]}
-						</div>
-						<div
-							className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-							onClick={() => handleClick(1)}
-						>
-							{cells[1]}
-						</div>
-						<div
-							className="border-b border-b-secondary-200 game-cell"
-							onClick={() => handleClick(2)}
-						>
-							{cells[2]}
-						</div>
-					</section>
-					<section className="flex">
-						<div
-							className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-							onClick={() => handleClick(3)}
-						>
-							{cells[3]}
-						</div>
-						<div
-							className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-							onClick={() => handleClick(4)}
-						>
-							{cells[4]}
-						</div>
-						<div
-							className="border-b border-b-secondary-200 game-cell"
-							onClick={() => handleClick(5)}
-						>
-							{cells[5]}
-						</div>
-					</section>
-					<section className="flex">
-						<div
-							className="border-r border-r-secondary-200 game-cell"
-							onClick={() => handleClick(6)}
-						>
-							{cells[6]}
-						</div>
-						<div
-							className="border-r border-r-secondary-200 game-cell"
-							onClick={() => handleClick(7)}
-						>
-							{cells[7]}
-						</div>
-						<div className="game-cell" onClick={() => handleClick(8)}>
-							{cells[8]}
-						</div>
-					</section>
-				</div>
-			</section>
-			<div className="bg-primary-200/[.6] p-2 mt-3 rounded-xl">
-				<p className="text-secondary-100 ">// tic tac toe</p>
-				<p className="text-secondary-100 ">
-					// click one of the cells to start
-				</p>
-				<p className="text-white">
-					<span className="text-secondary-300">let </span>
-					<span className="text-accent-200">
-						{winner === "X" || winner === "O"
-							? "winner"
-							: winner === "draw"
-							? "draw"
-							: "currentPlayer"}{" "}
-					</span>
-					=
-					<span className={winner === "draw" ? "text-true" : "text-accent-100"}>
-						{" "}
-						{winner === "draw" ? "true" : `"${player}"`}
-					</span>
-				</p>
-			</div>
+			<GameContent
+				winner={winner}
+				cells={cells}
+				handleClick={handleClick}
+				handleStartAgain={handleStartAgain}
+			/>
+			<GameFooter winner={winner} player={player} />
 		</section>
 	);
 };
