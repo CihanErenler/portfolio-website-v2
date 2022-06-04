@@ -3,12 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { AboutProvider } from "./context/AboutContext";
+import { GameProvider } from "./context/GameContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<AboutProvider>
+			<GameProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</GameProvider>
+		</AboutProvider>
 	</React.StrictMode>
 );

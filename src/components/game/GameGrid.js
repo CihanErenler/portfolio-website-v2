@@ -1,24 +1,31 @@
 import React from "react";
+import { useGameContext } from "../../context/GameContext";
 
-const GameGrid = ({ cells, handleClick }) => {
+const GameGrid = () => {
+	const { cells, handleClick, player } = useGameContext();
+	const clickCell = (x) => {
+		if (player === "X") {
+			handleClick(x);
+		}
+	};
 	return (
 		<div className="w-full h-full flex flex-col justify-center items-center text-white">
 			<section className="flex">
 				<div
 					className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-					onClick={() => handleClick(0)}
+					onClick={() => clickCell(0)}
 				>
 					{cells[0]}
 				</div>
 				<div
 					className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-					onClick={() => handleClick(1)}
+					onClick={() => clickCell(1)}
 				>
 					{cells[1]}
 				</div>
 				<div
 					className="border-b border-b-secondary-200 game-cell"
-					onClick={() => handleClick(2)}
+					onClick={() => clickCell(2)}
 				>
 					{cells[2]}
 				</div>
@@ -26,19 +33,19 @@ const GameGrid = ({ cells, handleClick }) => {
 			<section className="flex">
 				<div
 					className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-					onClick={() => handleClick(3)}
+					onClick={() => clickCell(3)}
 				>
 					{cells[3]}
 				</div>
 				<div
 					className="border-b border-r border-b-secondary-200 border-r-secondary-200 game-cell"
-					onClick={() => handleClick(4)}
+					onClick={() => clickCell(4)}
 				>
 					{cells[4]}
 				</div>
 				<div
 					className="border-b border-b-secondary-200 game-cell"
-					onClick={() => handleClick(5)}
+					onClick={() => clickCell(5)}
 				>
 					{cells[5]}
 				</div>
@@ -46,17 +53,17 @@ const GameGrid = ({ cells, handleClick }) => {
 			<section className="flex">
 				<div
 					className="border-r border-r-secondary-200 game-cell"
-					onClick={() => handleClick(6)}
+					onClick={() => clickCell(6)}
 				>
 					{cells[6]}
 				</div>
 				<div
 					className="border-r border-r-secondary-200 game-cell"
-					onClick={() => handleClick(7)}
+					onClick={() => clickCell(7)}
 				>
 					{cells[7]}
 				</div>
-				<div className="game-cell" onClick={() => handleClick(8)}>
+				<div className="game-cell" onClick={() => clickCell(8)}>
 					{cells[8]}
 				</div>
 			</section>

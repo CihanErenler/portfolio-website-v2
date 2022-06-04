@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { variants, transition } from "../App";
+import { Sidebar, About } from "../components";
 
 const AboutPage = () => {
 	return (
@@ -12,7 +13,10 @@ const AboutPage = () => {
 			exit="exit"
 			transition={transition}
 		>
-			AboutPage
+			<section className="h-full flex">
+				<Sidebar />
+				<About />
+			</section>
 		</motion.section>
 	);
 };

@@ -23,6 +23,7 @@ module.exports = {
 			black: "#000",
 			pale: "#E5E9F0",
 			true: "#c026d3",
+			react: "#61DBFB",
 		},
 		extend: {},
 	},

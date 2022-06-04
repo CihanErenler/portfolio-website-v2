@@ -1,7 +1,6 @@
 import React from "react";
-import { Container } from "../components";
+import { Container, Game } from "../components";
 import blur from "../assets/blur.png";
-import Game from "../components/game/Game";
 import { motion } from "framer-motion";
 import { variants, transition } from "../App";
 

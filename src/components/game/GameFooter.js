@@ -1,6 +1,8 @@
 import React from "react";
+import { useGameContext } from "../../context/GameContext";
 
-const GameFooter = ({ winner, player }) => {
+const GameFooter = () => {
+	const { winner, player } = useGameContext();
 	return (
 		<div className="bg-primary-200/[.6] p-2 mt-3 rounded-xl">
 			<p className="text-secondary-100 ">// tic tac toe</p>

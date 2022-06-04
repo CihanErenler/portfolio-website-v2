@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "../Button";
+import { useGameContext } from "../../context/GameContext";
 
-const GameText = ({ winner, handleStartAgain }) => {
+const GameText = () => {
+	const { winner, handleStartAgain } = useGameContext();
 	return (
 		<div className="absolute w-full text-center h-full flex flex-col justify-center items-center">
 			<div className="w-full bg-primary-100/[.8] py-4">
